@@ -3,100 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MediOnTime - 개인정보처리방침 (Privacy Policy)</title>
+  <title>MediOnTime - Privacy Policy (개인정보처리방침)</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
+    :root {
+      --primary: #2563eb;
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: #1e293b;
-      background: #f8fafc;
+      line-height: 1.65;
+      color: var(--text-muted);
+      background: var(--bg);
       margin: 0;
-      padding: 40px 20px;
+      padding: 40px 16px;
     }
     .container {
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
-      background: #ffffff;
+      background: var(--card-bg);
       padding: 36px 32px;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.2);
     }
     h1 {
-      font-size: 1.6rem;
+      font-size: 1.65rem;
       font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 8px;
-      border-bottom: 2px solid #2563eb;
-      padding-bottom: 12px;
+      color: var(--text-main);
+      margin: 0;
     }
-    h2 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #1e293b;
-      margin-top: 24px;
-      margin-bottom: 8px;
-    }
-    p, li {
-      font-size: 0.94rem;
-      color: #334155;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .badge {
+    .updated-badge {
       display: inline-block;
       background: #e0f2fe;
       color: #0369a1;
-      padding: 4px 8px;
+      padding: 4px 10px;
       border-radius: 6px;
       font-size: 0.82rem;
       font-weight: 600;
-      margin-bottom: 16px;
+      margin: 12px 0 24px;
+    }
+    h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 28px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+    p, li {
+      font-size: 0.94rem;
+    }
+    ul {
+      padding-left: 22px;
+      margin: 8px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .highlight-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 14px 18px;
+      color: #166534;
+      font-size: 0.9rem;
+      margin: 16px 0;
     }
     .footer {
-      margin-top: 32px;
-      padding-top: 16px;
-      border-top: 1px solid #e2e8f0;
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
       font-size: 0.85rem;
       color: #64748b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .lang-divider {
+      margin: 40px 0;
+      border: 0;
+      border-top: 2px dashed #cbd5e1;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>MediOnTime 개인정보처리방침</h1>
-    <div class="badge">최종 수정일: 2026년 8월 30일</div>
+    <div class="header">
+      <img src="/favicon.svg" alt="MediOnTime Logo" class="logo">
+      <h1>MediOnTime Privacy Policy</h1>
+    </div>
+    <div class="updated-badge">Last updated: August 30, 2026 / 최종 수정일: 2026년 8월 30일</div>
 
-    <p>MediOnTime(이하 "서비스")은 이용자의 개인정보 및 프라이버시를 매우 소중하게 생각하며, 관련 법령을 준수합니다. 본 개인정보처리방침은 서비스가 어떠한 정보를 수집하고 어떻게 처리하는지 설명합니다.</p>
+    <!-- Korean Section -->
+    <section>
+      <h2>1. 개요 (Introduction)</h2>
+      <p>MediOnTime(이하 "서비스")은 사용자의 개인정보와 프라이버시를 최우선으로 보호합니다. 본 방침은 서비스 이용 시 수집되는 최소한의 정보와 그 보호 방식을 설명합니다.</p>
 
-    <h2>1. 개인정보의 수집 및 이용 목적</h2>
-    <p>본 서비스는 사용자의 편리한 복약 관리 및 기기 간 동기화를 위해 Google OAuth 2.0 로그인을 제공합니다. 서비스는 서비스 운영 목적 외에 이용자의 개인정보를 제3자에게 제공하거나 상업적으로 활용하지 않습니다.</p>
+      <h2>2. 수집하는 정보 (Information We Collect)</h2>
+      <p>서비스는 복약 관리 및 데이터 동기화를 위해 Google OAuth 2.0 표준 인증을 통해 다음 정보에 접근합니다:</p>
+      <ul>
+        <li><strong>Google 프로필 정보:</strong> 이메일, 이름, 프로필 사진 (사용자 식별 및 프로필 표시 목적)</li>
+        <li><strong>Google Drive 비공개 앱 폴더 (drive.appdata):</strong> 오직 사용자의 복약 목록, 복용 시간, 복용 기록 파일만 저장/동기화</li>
+      </ul>
 
-    <h2>2. 수집하는 정보 항목 및 저장 위치</h2>
-    <ul>
-      <li><strong>Google 계정 기본 프로필 (이메일, 이름, 프로필 사진):</strong> 사용자 식별 및 화면 내 프로필 표시에만 사용됩니다.</li>
-      <li><strong>복약 일정 및 기록 데이터:</strong> 약품 이름, 복약 시간, 복약 완료 여부 등의 정보는 <strong>서비스 제공자의 중앙 서버가 아닌, 이용자 본인의 개인 Google Drive 비공개 앱 폴더(appDataFolder)에만 안전하게 저장</strong>됩니다.</li>
-    </ul>
+      <div class="highlight-box">
+        🔒 <strong>데이터 저장 원칙:</strong> MediOnTime은 자체 중앙 데이터베이스나 외부 서버를 일체 운영하지 않으며, 모든 복약 데이터는 <strong>사용자 본인의 개인 Google Drive 비공개 폴더에만 안전하게 저장</strong>됩니다.
+      </div>
 
-    <h2>3. 제3자 데이터 공유 및 전송</h2>
-    <p>MediOnTime은 사용자의 복약 데이터를 자체 데이터베이스나 외부 서버에 일체 전송하거나 보관하지 않습니다. 모든 데이터 전송은 사용자의 브라우저와 Google API 서버 간에만 암호화되어 직접 이루어집니다.</p>
+      <h2>3. 정보의 이용 목적 및 제3자 제공 금지 (Data Use & Sharing)</h2>
+      <ul>
+        <li>수집된 정보는 복약 알림 시간 계산 및 기기 간 동기화 목적으로만 사용됩니다.</li>
+        <li><strong>서비스는 어떠한 경우에도 사용자의 개인정보나 복약 데이터를 제3자에게 판매, 공유, 전송하지 않습니다.</strong></li>
+        <li>Google API 사용은 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API 서비스 사용자 데이터 정책</a>을 엄격히 준수합니다.</li>
+      </ul>
 
-    <h2>4. Google API 사용자 데이터 정책 준수</h2>
-    <p>MediOnTime의 Google API 사용은 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API 서비스 사용자 데이터 정책</a>(제한된 사용 요구사항 포함)을 엄격히 준수합니다.</p>
+      <h2>4. 권한 철회 및 데이터 삭제 (Data Deletion)</h2>
+      <p>사용자는 언제든지 Google 계정의 <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">타사 앱 연결 관리</a>에서 MediOnTime의 연결 권한을 즉시 철회할 수 있습니다. 권한 철회 시 Google Drive에 저장된 앱 데이터도 즉시 접근 불가 처리됩니다.</p>
 
-    <h2>5. 개인정보의 파기 및 접근 권한 철회</h2>
-    <p>이용자는 언제든지 Google 계정 설정(<a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">보안 - 타사 앱 연결 관리</a>)에서 MediOnTime에 대한 접근 권한을 즉시 철회하고 데이터를 삭제할 수 있습니다.</p>
+      <h2>5. 문의처 (Contact)</h2>
+      <p>개인정보 처리 및 서비스 관련 문의는 아래로 연락해 주시기 바랍니다.</p>
+      <ul>
+        <li>이메일: <a href="mailto:atpure100@gmail.com">atpure100@gmail.com</a></li>
+        <li>홈페이지: <a href="https://mediontime.github.io">https://mediontime.github.io</a></li>
+      </ul>
+    </section>
 
-    <h2>6. 문의처</h2>
-    <p>서비스 및 개인정보 처리에 관한 문의 사항은 아래의 개발자 연락처로 문의해 주시기 바랍니다.</p>
-    <ul>
-      <li>이메일: <a href="mailto:atpure100@gmail.com">atpure100@gmail.com</a></li>
-      <li>서비스 홈페이지: <a href="https://mediontime.github.io">https://mediontime.github.io</a></li>
-    </ul>
+    <hr class="lang-divider">
+
+    <!-- English Section (For Google OAuth Verification) -->
+    <section>
+      <h2>English Summary for Google OAuth Verification</h2>
+      <p><strong>MediOnTime</strong> is a smart medication management application designed with a privacy-first architecture.</p>
+      <ul>
+        <li><strong>Zero Central Storage:</strong> MediOnTime does not host any backend database or store user medical data on external servers.</li>
+        <li><strong>Google Drive App Folder (drive.appdata scope):</strong> Used exclusively to store and synchronize user medication schedules and logs within the user's private Google Drive application folder.</li>
+        <li><strong>Data Sharing:</strong> We never sell, share, or disclose user data to third parties.</li>
+        <li><strong>Security:</strong> All communication takes place directly between the user's device and Google's secure APIs via HTTPS OAuth 2.0 flows.</li>
+      </ul>
+    </section>
 
     <div class="footer">
-      &copy; 2026 MediOnTime. All rights reserved.
+      <div>&copy; 2026 MediOnTime. All rights reserved.</div>
+      <div><a href="https://mediontime.github.io">MediOnTime App</a></div>
     </div>
   </div>
 </body>
