@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   
-  <script type="module" crossorigin src="/assets/index-CNSxxi18.js"></script>
+  <script type="module" crossorigin src="/assets/index-CxqDezGr.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-CJxve5sG.css">
 </head>
 <body class="light-theme">
@@ -90,7 +90,7 @@
                     <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
                     <circle cx="12" cy="12" r="3"/>
                   </svg>
-                  <span>설정 및 약품 관리</span>
+                  <span>약품 관리</span>
                 </button>
                 <div class="dropdown-divider"></div>
                 <button type="button" id="dropdownLogoutBtn" class="dropdown-item dropdown-danger">
@@ -136,34 +136,10 @@
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
         </button>
-        <h2 class="settings-page-title">약품 관리 및 계정</h2>
+        <h2 class="settings-page-title">약품 관리</h2>
       </header>
 
       <main class="settings-page-content">
-        <!-- Google Account Section -->
-        <section class="settings-group-card" id="settingsAccountSection">
-          <div class="section-heading">
-            <h3 class="section-title">Google 계정</h3>
-          </div>
-          <div id="settingsUserCard" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #f8fafc; border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <img id="settingsUserAvatar" class="user-avatar-img" style="width: 36px; height: 36px;" src="" alt="">
-              <div>
-                <div id="settingsUserName" style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">비로그인</div>
-                <div id="settingsUserEmail" style="font-size: 0.8rem; color: var(--text-muted);">로컬 모드로 동작 중</div>
-              </div>
-            </div>
-            <button type="button" id="settingsAuthActionBtn" class="btn btn-secondary" style="font-size: 0.85rem; padding: 8px 14px;">로그인</button>
-          </div>
-
-          <div class="privacy-card-note">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-            <span>사용자의 개인정보 보호를 위해 모든 복약 정보는 사용자의 Google Drive에 저장되며, MediOnTime은 데이터를 저장하지 않습니다.</span>
-          </div>
-        </section>
-
         <!-- New Medication Registration Button -->
         <div class="manage-action-bar">
           <button type="button" id="openAddMedFromPageBtn" class="btn btn-primary btn-lg full-width">
@@ -186,6 +162,14 @@
             <!-- Dynamically rendered medication cards in JS -->
           </div>
         </section>
+
+        <!-- Privacy Notice at the bottom of settings page -->
+        <div class="privacy-card-note">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>사용자의 개인정보 보호를 위해 모든 복약 정보는 사용자의 Google Drive에 저장되며, MediOnTime은 데이터를 저장하지 않습니다.</span>
+        </div>
       </main>
     </div>
 
