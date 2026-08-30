@@ -16,8 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   
-  <script type="module" crossorigin src="/assets/index-Da6rHgHZ.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-D_tvHfH5.css">
+  <script type="module" crossorigin src="/assets/index-C8gXl7NZ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BySBodty.css">
 </head>
 <body class="light-theme">
   <!-- Full-screen loader -->
@@ -235,24 +235,39 @@
             <input type="text" id="medDosageInput" class="form-control" placeholder="식후 30분" data-i18n-placeholder="placeholder_med_dosage">
           </div>
 
-          <!-- 4. Cycle Selection (복약 주기: 일자 주기 vs 요일 주기) -->
+          <!-- 4. Cycle Selection (복약 주기: 시작일, 종료일, 무기한 및 일자/요일 주기) -->
           <div class="form-row">
             <label class="form-label required"><span data-i18n="label_cycle">복약 주기</span> <span class="req-star">*</span></label>
+
+            <!-- Date Range Controls: Start Date & End Date / Indefinite -->
+            <div class="med-date-range-box">
+              <div class="med-date-row">
+                <label for="medStartDateInput" class="med-date-label" data-i18n="label_start_date">시작일</label>
+                <input type="date" id="medStartDateInput" class="form-control med-date-input" required>
+              </div>
+              <div class="med-date-row">
+                <label for="medEndDateInput" class="med-date-label" data-i18n="label_end_date">종료일</label>
+                <div class="med-end-date-control">
+                  <input type="date" id="medEndDateInput" class="form-control med-date-input">
+                  <label class="indefinite-check-label" for="medIndefiniteCheckbox">
+                    <input type="checkbox" id="medIndefiniteCheckbox">
+                    <span data-i18n="label_indefinite">무기한</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
             <div class="cycle-type-toggle">
               <button type="button" class="cycle-tab-btn active" id="cycleIntervalTabBtn" data-cycle="interval" data-i18n="tab_interval">일자 주기</button>
               <button type="button" class="cycle-tab-btn" id="cycleDaysTabBtn" data-cycle="daysOfWeek" data-i18n="tab_days_of_week">요일 주기</button>
             </div>
 
-            <!-- 4-1. 일자 주기 컨테이너 (x일 마다, 시작일) -->
+            <!-- 4-1. 일자 주기 컨테이너 (x일 마다) -->
             <div id="cycleIntervalContainer" class="cycle-sub-container">
               <div class="cycle-interval-row">
                 <div class="interval-input-group">
                   <input type="number" id="intervalDaysInput" class="form-control interval-number-input" min="1" max="365" value="1">
                   <span class="interval-unit-text" data-i18n="unit_days_interval">일 마다</span>
-                </div>
-                <div class="interval-start-group">
-                  <label for="intervalStartDateInput" class="interval-start-label" data-i18n="label_start_date">시작일</label>
-                  <input type="date" id="intervalStartDateInput" class="form-control interval-date-input">
                 </div>
               </div>
             </div>
