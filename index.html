@@ -16,8 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   
-  <script type="module" crossorigin src="/assets/index-B3bvs4Ld.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BnrJ4oj-.css">
+  <script type="module" crossorigin src="/assets/index-CS6Ab6Ky.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DsK2iB6Q.css">
 </head>
 <body class="light-theme">
   <!-- Full-screen loader -->
@@ -29,6 +29,13 @@
       <div class="loader-title">
         <img src="/loader-title.svg" alt="MediOnTime" width="145" height="28" style="display: block; width: 145px; height: auto;">
       </div>
+    </div>
+  </div>
+  <!-- Saving / Deleting full-screen action loader (prevents double-tap) -->
+  <div id="savingLoader" class="saving-loader" style="display: none;" aria-live="polite" aria-label="처리 중">
+    <div class="saving-loader-box">
+      <div class="saving-spinner"></div>
+      <p id="savingLoaderText" class="saving-loader-text">저장 중…</p>
     </div>
   </div>
 
