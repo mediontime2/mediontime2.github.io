@@ -16,8 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   
-  <script type="module" crossorigin src="/assets/index-Dm6ZMsTE.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-2XAgYhox.css">
+  <script type="module" crossorigin src="/assets/index-KxAYezsP.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-a6MiJ_rs.css">
 </head>
 <body class="light-theme">
   <!-- Full-screen loader -->
@@ -100,27 +100,29 @@
       </header>
 
       <!-- Main Table Container: Medical Sheet Grid -->
-      <main class="table-sheet-wrapper" id="tableSheetWrapper">
-        <!-- Horizontal Scroll Indicators (<< / >>) -->
+      <div class="table-scroll-container" id="tableScrollContainer">
+        <!-- Horizontal Scroll Indicators (<< / >>) - outside scroll area, fixed position within container -->
         <button type="button" id="scrollIndicatorLeft" class="scroll-indicator scroll-left" style="display: none;" title="왼쪽으로 스크롤">&lt;&lt;</button>
         <button type="button" id="scrollIndicatorRight" class="scroll-indicator scroll-right" style="display: none;" title="오른쪽으로 스크롤">&gt;&gt;</button>
 
-        <table class="medication-sheet-table" id="matrixTable">
-          <thead id="matrixHead">
-            <!-- Dynamically populated columns (Blank top-left, Medicine photo & name) -->
-          </thead>
-          <tbody id="matrixBody">
-            <!-- Dynamically populated meal rows -->
-          </tbody>
-        </table>
+        <main class="table-sheet-wrapper" id="tableSheetWrapper">
+          <table class="medication-sheet-table" id="matrixTable">
+            <thead id="matrixHead">
+              <!-- Dynamically populated columns (Blank top-left, Medicine photo & name) -->
+            </thead>
+            <tbody id="matrixBody">
+              <!-- Dynamically populated meal rows -->
+            </tbody>
+          </table>
 
-        <!-- Empty State -->
-        <div id="emptyState" class="empty-sheet-state" style="display: none;">
-          <div class="empty-state-icon">💊</div>
-          <p>등록된 약품이 없습니다.</p>
-          <button id="emptyAddBtn" class="btn btn-primary">약품 등록하기</button>
-        </div>
-      </main>
+          <!-- Empty State -->
+          <div id="emptyState" class="empty-sheet-state" style="display: none;">
+            <div class="empty-state-icon">💊</div>
+            <p>등록된 약품이 없습니다.</p>
+            <button id="emptyAddBtn" class="btn btn-primary">약품 등록하기</button>
+          </div>
+        </main>
+      </div>
     </div>
 
     <!-- 2. Settings & Medication Management Page View -->
