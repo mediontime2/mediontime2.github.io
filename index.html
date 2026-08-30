@@ -16,8 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   
-  <script type="module" crossorigin src="/assets/index-DCA27YGK.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DQObHi1W.css">
+  <script type="module" crossorigin src="/assets/index-mdo7AMDx.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BHFAV4rw.css">
 </head>
 <body class="light-theme">
   <!-- Full-screen loader -->
@@ -197,18 +197,20 @@
           </svg>
         </button>
         <h2 class="settings-page-title" data-i18n="history_page_title">복약 히스토리</h2>
-        <button type="button" id="deleteSelectedHistoryBtn" class="btn btn-danger btn-sm" style="display: none;" data-i18n="btn_delete_selected">선택 삭제</button>
       </header>
 
       <main class="settings-page-body">
-        <!-- History Top Toolbar: Total & Selection Counter, Select All -->
+        <!-- History Top Toolbar: Total & Selection Counter, Select All, Delete Selected Button -->
         <div class="history-toolbar">
           <label class="history-select-all-label">
             <input type="checkbox" id="selectAllHistoryCheckbox">
             <span data-i18n="select_all">전체 선택</span>
           </label>
-          <div class="history-count-badge" id="historyCountBadge">
-            총 <strong id="historyTotalCount">0</strong>개 중 <strong id="historySelectedCount">0</strong>개 선택됨
+          <div class="history-toolbar-right">
+            <div class="history-count-badge" id="historyCountBadge">
+              총 <strong id="historyTotalCount">0</strong>개 중 <strong id="historySelectedCount">0</strong>개 선택됨
+            </div>
+            <button type="button" id="deleteSelectedHistoryBtn" class="btn btn-danger btn-sm" style="display: none;" data-i18n="btn_delete_selected">선택 삭제</button>
           </div>
         </div>
 
