@@ -46,7 +46,7 @@ ${l}\r
     `;e.matrixBody.innerHTML=i;return}let l="";r.forEach(i=>{l+=`
       <tr>
         <th class="time-row-label">${i.labelKo}</th>
-    `,t.forEach(s=>{if(s.scheduleTimes&&s.scheduleTimes.includes(i.id)){const u=d.getIntakeStatus(s.id,i.id),g=Number(u.status);let p="",y="",f=m("status_not_taken");if(g===1){p="taken";const w=H(u.takenAt)||i.labelKo;y=`<span class="taken-check-watermark">✓</span><span class="taken-time-overlay">${w}</span>`,f=m("status_taken_tooltip",{time:w})}else g===2&&(p="hold",y='<svg class="hold-pause-icon" viewBox="0 0 24 24" fill="none"><line x1="8" y1="5" x2="8" y2="19"></line><line x1="16" y1="5" x2="16" y2="19"></line></svg>',f=m("status_hold_tooltip"));l+=`
+    `,t.forEach(s=>{if(s.scheduleTimes&&s.scheduleTimes.includes(i.id)){const u=d.getIntakeStatus(s.id,i.id),g=Number(u.status);let p="",y="",f=m("status_not_taken");if(g===1){p="taken";const w=H(u.takenAt)||i.labelKo;y=`<span class="taken-time-overlay">${w}</span>`,f=m("status_taken_tooltip",{time:w})}else g===2&&(p="hold",y='<svg class="hold-pause-icon" viewBox="0 0 24 24" fill="none"><line x1="8" y1="5" x2="8" y2="19"></line><line x1="16" y1="5" x2="16" y2="19"></line></svg>',f=m("status_hold_tooltip"));l+=`
           <td class="sheet-cell">
             <span class="mark-badge ${p}" data-toggle-med="${s.id}" data-toggle-slot="${i.id}" title="${f}">
               ${y}
