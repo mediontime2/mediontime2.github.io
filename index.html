@@ -16,8 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   
-  <script type="module" crossorigin src="/assets/index-9ZMAX2_c.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-Bjq8E_0G.css">
+  <script type="module" crossorigin src="/assets/index-NrucxlAR.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BayOy5xR.css">
 </head>
 <body class="light-theme">
   <!-- Full-screen loader -->
@@ -100,7 +100,11 @@
       </header>
 
       <!-- Main Table Container: Medical Sheet Grid -->
-      <main class="table-sheet-wrapper">
+      <main class="table-sheet-wrapper" id="tableSheetWrapper">
+        <!-- Horizontal Scroll Indicators (<< / >>) -->
+        <button type="button" id="scrollIndicatorLeft" class="scroll-indicator scroll-left" style="display: none;" title="왼쪽으로 스크롤">&lt;&lt;</button>
+        <button type="button" id="scrollIndicatorRight" class="scroll-indicator scroll-right" style="display: none;" title="오른쪽으로 스크롤">&gt;&gt;</button>
+
         <table class="medication-sheet-table" id="matrixTable">
           <thead id="matrixHead">
             <!-- Dynamically populated columns (Blank top-left, Medicine photo & name) -->
