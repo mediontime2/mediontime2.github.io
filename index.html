@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediOnTime - 스마트 복약 알림 & 구글 드라이브 동기화</title>
+  <meta name="description" content="웹과 안드로이드에서 실시간 동기화되는 스마트 복약 관리 서비스. 개인 구글 드라이브에 안전하게 보관되는 나만의 복약 기록.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Google Identity Services (GIS) Library for OAuth 2.0 -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <!-- Fonts: Pretendard & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  
+  <script type="module" crossorigin src="/assets/index-DqQPGt4a.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-ClkWdSVv.css">
+</head>
+<body class="light-theme">
+  <!-- Full-screen loader -->
+  <div id="appLoader" class="app-loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <img src="/favicon.svg" alt="MediOnTime App Logo" width="44" height="44" style="border-radius: 11px; box-shadow: 0 4px 12px rgba(37,99,235,0.25);">
+      </div>
+      <div class="loader-title">
+        <img src="/loader-title.svg" alt="MediOnTime" width="145" height="28" style="display: block; width: 145px; height: auto;">
+      </div>
+    </div>
+  </div>
+
+  <div id="app" class="app-container">
+    <!-- 1. Main Dashboard View -->
+    <div id="dashboardView" class="app-view">
+      <!-- Top Minimal Bar: Left Logo, Centered Date, Right Auth & Settings -->
+      <header class="top-nav-bar">
+        <div class="top-brand-left">
+          <div class="brand-logo-compact">
+            <img src="/favicon.svg" alt="MediOnTime App Logo" class="brand-app-logo" width="22" height="22" style="border-radius: 6px; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <span class="brand-title-sm">MediOnTime</span>
+          </div>
+        </div>
+
+        <div class="date-center-container">
+          <div class="date-navigator">
+            <button id="todayJumpBtn" class="btn-today" title="오늘 날짜로 이동">오늘</button>
+            <button id="prevDateBtn" class="nav-arrow-btn" title="이전 날짜">&lt;</button>
+            <div class="current-date-title" id="datePickerTrigger">
+              <span id="displayDateText">2026.08.29 (토)</span>
+            </div>
+            <button id="nextDateBtn" class="nav-arrow-btn" title="다음 날짜">&gt;</button>
+            <input type="date" id="hiddenDateInput" style="display: none;">
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <!-- Auth Profile / Login Button Container -->
+          <div id="authHeaderContainer">
+            <button type="button" id="googleLoginBtn" class="btn-google-login">
+              <svg viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <span>로그인</span>
+            </button>
+
+            <div id="userProfileArea" class="user-profile-dropdown-container" style="display: none;">
+              <button type="button" id="userProfileBtn" class="user-profile-btn" title="계정 및 설정">
+                <img id="userAvatarImg" class="user-avatar-img" src="" alt="프로필" style="display: none;">
+                <div id="userAvatarPlaceholder" class="user-avatar-placeholder">U</div>
+                <span id="userNameText" class="user-name-text">사용자</span>
+                <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <!-- Dropdown Menu -->
+              <div id="userDropdownMenu" class="user-dropdown-menu" style="display: none;">
+                <div class="dropdown-user-header">
+                  <div id="dropdownUserEmail" class="dropdown-user-email">user@gmail.com</div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <button type="button" id="dropdownSettingsBtn" class="dropdown-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <span>설정 및 약품 관리</span>
+                </button>
+                <button type="button" id="dropdownSyncBtn" class="dropdown-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                  </svg>
+                  <span>Google Drive 동기화</span>
+                </button>
+                <div class="dropdown-divider"></div>
+                <button type="button" id="dropdownLogoutBtn" class="dropdown-item dropdown-danger">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg>
+                  <span>로그아웃</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Table Container: Medical Sheet Grid -->
+      <main class="table-sheet-wrapper">
+        <table class="medication-sheet-table" id="matrixTable">
+          <thead id="matrixHead">
+            <!-- Dynamically populated columns (Blank top-left, Medicine photo & name) -->
+          </thead>
+          <tbody id="matrixBody">
+            <!-- Dynamically populated meal rows -->
+          </tbody>
+        </table>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-sheet-state" style="display: none;">
+          <div class="empty-state-icon">💊</div>
+          <p>등록된 약품이 없습니다.</p>
+          <button id="emptyAddBtn" class="btn btn-primary">약품 등록하기</button>
+        </div>
+      </main>
+    </div>
+
+    <!-- 2. Settings & Medication Management Page View -->
+    <div id="settingsPageView" class="app-view" style="display: none;">
+      <header class="settings-page-header">
+        <button type="button" id="backToDashboardBtn" class="btn-back-nav" title="대시보드로 돌아가기" aria-label="대시보드로 돌아가기">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+        <h2 class="settings-page-title">약품 관리 및 계정</h2>
+      </header>
+
+      <main class="settings-page-content">
+        <!-- Google Account Section -->
+        <section class="settings-group-card" id="settingsAccountSection">
+          <div class="section-heading">
+            <h3 class="section-title">Google 계정</h3>
+          </div>
+          <div id="settingsUserCard" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #f8fafc; border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img id="settingsUserAvatar" class="user-avatar-img" style="width: 36px; height: 36px;" src="" alt="">
+              <div>
+                <div id="settingsUserName" style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">비로그인</div>
+                <div id="settingsUserEmail" style="font-size: 0.8rem; color: var(--text-muted);">로컬 모드로 동작 중</div>
+              </div>
+            </div>
+            <button type="button" id="settingsAuthActionBtn" class="btn btn-secondary" style="font-size: 0.85rem; padding: 8px 14px;">로그인</button>
+          </div>
+        </section>
+
+        <!-- New Medication Registration Button -->
+        <div class="manage-action-bar">
+          <button type="button" id="openAddMedFromPageBtn" class="btn btn-primary btn-lg full-width">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>새 약품 등록</span>
+          </button>
+        </div>
+
+        <!-- Registered Medications Section -->
+        <section class="manage-meds-section">
+          <div class="section-heading">
+            <h3 class="section-title">현재 등록된 약품</h3>
+            <span class="med-count-pill" id="manageMedCount">0개</span>
+          </div>
+
+          <div class="med-manage-list" id="manageMedsList">
+            <!-- Dynamically rendered medication cards in JS -->
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Modal: Add / Edit / Delete Medication -->
+    <div id="medicationModal" class="modal-overlay" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="modalTitle">약품 등록</h3>
+          <button class="modal-close-btn" id="closeMedModalBtn">&times;</button>
+        </div>
+
+        <form id="medicationForm" class="modal-body">
+          <input type="hidden" id="editMedId">
+
+          <!-- 1. Medicine Name (Required) -->
+          <div class="form-row">
+            <label for="medNameInput" class="form-label required">약품명 <span class="req-star">*</span></label>
+            <input type="text" id="medNameInput" class="form-control" placeholder="예: 감기약" required>
+          </div>
+
+          <!-- 2. Medicine Photo (Optional) -->
+          <div class="form-row">
+            <label class="form-label">약품 사진 <span class="opt-tag">(선택)</span></label>
+            <div class="photo-select-row">
+              <div class="photo-preview-box" id="photoPreviewBox">
+                <div class="photo-placeholder" id="photoPlaceholder">
+                  <span>사진 선택</span>
+                </div>
+                <img id="photoPreviewImg" src="" alt="미리보기" style="display: none;">
+                <button type="button" id="removePhotoBtn" class="photo-remove-btn" style="display: none;" title="삭제">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+              <input type="file" id="photoFileInput" accept="image/*" style="display: none;">
+              
+              <div class="photo-inputs">
+                <input type="url" id="photoUrlInput" class="form-control" placeholder="이미지 URL 입력 (https://...)">
+                <div class="preset-icon-buttons">
+                  <button type="button" class="preset-icon-btn" data-preset="pill">💊 알약</button>
+                  <button type="button" class="preset-icon-btn" data-preset="ointment">🧪 연고</button>
+                  <button type="button" class="preset-icon-btn" data-preset="eyedrop">💧 점안액</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Dosage / Description (Optional) -->
+          <div class="form-row">
+            <label for="medDosageInput" class="form-label">용법 및 메모 <span class="opt-tag">(선택)</span></label>
+            <input type="text" id="medDosageInput" class="form-control" placeholder="식후 30분">
+          </div>
+
+          <!-- 4. Cycle Selection (복약 주기: 일자 주기 vs 요일 주기) -->
+          <div class="form-row">
+            <label class="form-label required">복약 주기 <span class="req-star">*</span></label>
+            <div class="cycle-type-toggle">
+              <button type="button" class="cycle-tab-btn active" id="cycleIntervalTabBtn" data-cycle="interval">일자 주기</button>
+              <button type="button" class="cycle-tab-btn" id="cycleDaysTabBtn" data-cycle="daysOfWeek">요일 주기</button>
+            </div>
+
+            <!-- 4-1. 일자 주기 컨테이너 (x일 마다, 시작일) -->
+            <div id="cycleIntervalContainer" class="cycle-sub-container">
+              <div class="cycle-interval-row">
+                <div class="interval-input-group">
+                  <input type="number" id="intervalDaysInput" class="form-control interval-number-input" min="1" max="365" value="1">
+                  <span class="interval-unit-text">일 마다</span>
+                </div>
+                <div class="interval-start-group">
+                  <label for="intervalStartDateInput" class="interval-start-label">시작일</label>
+                  <input type="date" id="intervalStartDateInput" class="form-control interval-date-input">
+                </div>
+              </div>
+            </div>
+
+            <!-- 4-2. 요일 주기 컨테이너 (ㅁ일 ㅁ월 ㅁ화 ㅁ수 ㅁ목 ㅁ금 ㅁ토) -->
+            <div id="cycleDaysContainer" class="cycle-sub-container" style="display: none;">
+              <div class="days-of-week-grid" id="daysOfWeekGrid">
+                <label class="day-check-item">
+                  <input type="checkbox" name="cycleDay" value="0">
+                  <span>일</span>
+                </label>
+                <label class="day-check-item">
+                  <input type="checkbox" name="cycleDay" value="1">
+                  <span>월</span>
+                </label>
+                <label class="day-check-item">
+                  <input type="checkbox" name="cycleDay" value="2">
+                  <span>화</span>
+                </label>
+                <label class="day-check-item">
+                  <input type="checkbox" name="cycleDay" value="3">
+                  <span>수</span>
+                </label>
+                <label class="day-check-item">
+                  <input type="checkbox" name="cycleDay" value="4">
+                  <span>목</span>
+                </label>
+                <label class="day-check-item">
+                  <input type="checkbox" name="cycleDay" value="5">
+                  <span>금</span>
+                </label>
+                <label class="day-check-item">
+                  <input type="checkbox" name="cycleDay" value="6">
+                  <span>토</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Schedule Selection: 복약 시각 -->
+          <div class="form-row">
+            <div class="schedule-label-bar">
+              <label class="form-label required" id="scheduleSelectionLabel">복약 시각 <span class="req-star">*</span></label>
+              <div class="preset-chips" id="presetChipsContainer">
+                <!-- Preset buttons dynamically injected in JS based on scheduleMode -->
+              </div>
+            </div>
+
+            <!-- Checkboxes Grid (00:00 ~ 23:00) -->
+            <div class="time-slots-grid" id="timeSlotsGrid">
+              <!-- Dynamically generated in JS -->
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" id="deleteMedBtn" class="btn btn-danger" style="display: none; margin-right: auto;">삭제</button>
+            <button type="button" class="btn btn-secondary" id="cancelMedModalBtn">취소</button>
+            <button type="submit" class="btn btn-primary" id="saveMedBtn">저장</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Custom Confirm Delete Modal (Top-level Overlay) -->
+    <div class="modal-overlay" id="confirmDeleteModal" style="display: none; z-index: 200;">
+      <div class="modal-card" style="max-width: 350px; text-align: center; padding: 28px 20px;">
+        <div class="delete-icon-picto">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            <line x1="10" y1="11" x2="10" y2="17"></line>
+            <line x1="14" y1="11" x2="14" y2="17"></line>
+          </svg>
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">약품 삭제</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 22px; line-height: 1.5;">
+          정말 이 약품을 삭제하시겠습니까?<br>
+          <span style="font-size: 0.78rem; color: #64748b;">(어제까지의 과거 복약 기록은 유지됩니다)</span>
+        </p>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+          <button type="button" class="btn btn-secondary" id="cancelDeleteConfirmBtn" style="flex: 1; padding: 10px;">취소</button>
+          <button type="button" class="btn btn-danger" id="executeDeleteConfirmBtn" style="flex: 1; padding: 10px;">삭제</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

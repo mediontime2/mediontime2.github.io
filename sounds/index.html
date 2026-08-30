@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediTime 복약 알람 사운드 후보 5선</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.06);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 640px;
+      width: 100%;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .sound-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .sound-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.2s ease;
+    }
+    .sound-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.12);
+    }
+    .sound-number {
+      width: 44px;
+      height: 44px;
+      background: #eff6ff;
+      color: var(--primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .sound-info {
+      flex: 1;
+    }
+    .sound-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .sound-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .sound-duration {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .play-btn {
+      width: 52px;
+      height: 52px;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    .play-btn:hover {
+      background: var(--primary-hover);
+      transform: scale(1.06);
+    }
+    .play-btn:active {
+      transform: scale(0.96);
+    }
+    .play-btn.playing {
+      background: #ef4444;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 32px;
+      padding: 16px;
+      background: #f1f5f9;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🔔 MediTime 복약 알람 사운드 후보</h1>
+      <p>1~2초 길이의 깔끔하고 기분 좋은 알림음 5가지입니다.<br>각 항목의 재생 버튼을 눌러 들어보시고 마음에 드는 번호를 선택해 주세요!</p>
+    </div>
+
+    <div class="sound-list">
+      <!-- Sound 1 -->
+      <div class="sound-card">
+        <div class="sound-number">1</div>
+        <div class="sound-info">
+          <div class="sound-title">따뜻한 마림바 챠임 (Warm Marimba)</div>
+          <div class="sound-desc">C5 ➔ E5 ➔ G5 3단계 화음의 부드럽고 친근한 목관 챠임 벨소리</div>
+          <span class="sound-duration">1.5초</span>
+        </div>
+        <button class="play-btn" onclick="playSound('./sound1_marimba_warm.wav', this)">▶</button>
+      </div>
+
+      <!-- Sound 2 -->
+      <div class="sound-card">
+        <div class="sound-number">2</div>
+        <div class="sound-info">
+          <div class="sound-title">맑은 크리스탈 드롭 (Crystal Drop)</div>
+          <div class="sound-desc">맑고 청량한 크리스탈 물방울 화음 딩동 소리 (높은 명료도)</div>
+          <span class="sound-duration">1.2초</span>
+        </div>
+        <button class="play-btn" onclick="playSound('./sound2_crystal_drop.wav', this)">▶</button>
+      </div>
+
+      <!-- Sound 3 -->
+      <div class="sound-card">
+        <div class="sound-number">3</div>
+        <div class="sound-info">
+          <div class="sound-title">모던 메디컬 2단 핑 (Medical Ping)</div>
+          <div class="sound-desc">병원/디지털 기기 스타일의 정갈하고 확실한 2단 핑 알림음</div>
+          <span class="sound-duration">1.4초</span>
+        </div>
+        <button class="play-btn" onclick="playSound('./sound3_medical_ping.wav', this)">▶</button>
+      </div>
+
+      <!-- Sound 4 -->
+      <div class="sound-card">
+        <div class="sound-number">4</div>
+        <div class="sound-info">
+          <div class="sound-title">우아한 하프 아르페지오 (Gentle Harp)</div>
+          <div class="sound-desc">도-솔-도-미 4단계로 가볍게 올라가는 우아하고 안정적인 선율</div>
+          <span class="sound-duration">1.8초</span>
+        </div>
+        <button class="play-btn" onclick="playSound('./sound4_harp_arpeggio.wav', this)">▶</button>
+      </div>
+
+      <!-- Sound 5 -->
+      <div class="sound-card">
+        <div class="sound-number">5</div>
+        <div class="sound-info">
+          <div class="sound-title">부드러운 비브라폰 듀얼 (Soft Vibraphone)</div>
+          <div class="sound-desc">은은한 바이브레이션과 잔향이 돋보이는 차분하고 편안한 이중 화음</div>
+          <span class="sound-duration">1.6초</span>
+        </div>
+        <button class="play-btn" onclick="playSound('./sound5_soft_vibraphone.wav', this)">▶</button>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      💡 <strong>충돌 방지 오프셋 적용 안내</strong>: 모든 알람은 정시 00초 대신 <strong>+5초(예: 08:00:05)</strong>에 정밀 발생하도록 설정되었습니다.
+    </div>
+  </div>
+
+  <script>
+    let currentAudio = null;
+    let currentBtn = null;
+
+    function playSound(src, btn) {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        if (currentBtn) {
+          currentBtn.textContent = '▶';
+          currentBtn.classList.remove('playing');
+        }
+      }
+
+      if (currentBtn === btn && currentAudio && !currentAudio.paused) {
+        currentAudio = null;
+        currentBtn = null;
+        return;
+      }
+
+      const audio = new Audio(src);
+      currentAudio = audio;
+      currentBtn = btn;
+      btn.textContent = '■';
+      btn.classList.add('playing');
+
+      audio.play().catch(e => console.error("Playback error:", e));
+
+      audio.onended = () => {
+        btn.textContent = '▶';
+        btn.classList.remove('playing');
+        currentAudio = null;
+        currentBtn = null;
+      };
+    }
+  </script>
+</body>
+</html>
