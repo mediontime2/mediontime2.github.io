@@ -16,8 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   
-  <script type="module" crossorigin src="/assets/index-BJ3mDjpD.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BySBodty.css">
+  <script type="module" crossorigin src="/assets/index-B_coMkIu.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Dm6qL02l.css">
 </head>
 <body class="light-theme">
   <!-- Full-screen loader -->
@@ -86,10 +86,17 @@
               <div id="userDropdownMenu" class="user-dropdown-menu" style="display: none;">
                 <button type="button" id="dropdownSettingsBtn" class="dropdown-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
-                    <circle cx="12" cy="12" r="3"/>
+                    <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
+                    <path d="m8.5 8.5 7 7"></path>
                   </svg>
                   <span data-i18n="menu_manage_meds">약품 관리</span>
+                </button>
+                <button type="button" id="dropdownHistoryBtn" class="dropdown-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span data-i18n="menu_history">히스토리</span>
                 </button>
                 <div class="dropdown-divider"></div>
                 <button type="button" id="dropdownLogoutBtn" class="dropdown-item dropdown-danger">
@@ -177,6 +184,43 @@
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
           </svg>
           <span data-i18n="privacy_note">사용자의 개인정보 보호를 위해 모든 복약 정보는 사용자의 Google Drive에 저장되며, MediOnTime은 데이터를 저장하지 않습니다.</span>
+        </div>
+      </main>
+    </div>
+
+    <!-- 3. History Page View (복약 히스토리) -->
+    <div id="historyPageView" class="app-view" style="display: none;">
+      <header class="settings-page-header">
+        <button type="button" id="backToDashboardFromHistoryBtn" class="btn-back-nav" title="대시보드로 돌아가기" aria-label="대시보드로 돌아가기" data-i18n-title="btn_back_dashboard" data-i18n-aria-label="btn_back_dashboard">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <h2 class="settings-page-title" data-i18n="history_page_title">복약 히스토리</h2>
+        <button type="button" id="deleteSelectedHistoryBtn" class="btn btn-danger btn-sm" style="display: none;" data-i18n="btn_delete_selected">선택 삭제</button>
+      </header>
+
+      <main class="settings-page-body">
+        <!-- History Top Toolbar: Total & Selection Counter, Select All -->
+        <div class="history-toolbar">
+          <label class="history-select-all-label">
+            <input type="checkbox" id="selectAllHistoryCheckbox">
+            <span data-i18n="select_all">전체 선택</span>
+          </label>
+          <div class="history-count-badge" id="historyCountBadge">
+            총 <strong id="historyTotalCount">0</strong>개 중 <strong id="historySelectedCount">0</strong>개 선택됨
+          </div>
+        </div>
+
+        <!-- History Date Cards List -->
+        <div class="history-list" id="historyList">
+          <!-- Dynamically populated date rows -->
+        </div>
+
+        <div id="historyEmptyState" class="manage-empty-state" style="display: none;">
+          <div class="empty-icon-large">📋</div>
+          <h3 data-i18n="history_empty_title">저장된 복약 기록이 없습니다.</h3>
+          <p data-i18n="history_empty_desc">복약을 체크하면 날짜별 기록이 이곳에 저장됩니다.</p>
         </div>
       </main>
     </div>
