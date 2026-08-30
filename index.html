@@ -16,8 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   
-  <script type="module" crossorigin src="/assets/index-DzeLK2mA.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-SKNrVbQr.css">
+  <script type="module" crossorigin src="/assets/index-CDGfdJd4.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-LJ4W7A5Y.css">
 </head>
 <body class="light-theme">
   <!-- Full-screen loader -->
@@ -342,6 +342,14 @@
           <button type="button" class="btn btn-secondary" id="cancelDeleteConfirmBtn" style="flex: 1; padding: 10px;" data-i18n="btn_cancel">취소</button>
           <button type="button" class="btn btn-danger" id="executeDeleteConfirmBtn" style="flex: 1; padding: 10px;" data-i18n="btn_delete_confirm">삭제</button>
         </div>
+      </div>
+    </div>
+
+    <!-- Photo Zoom Lightbox Modal -->
+    <div id="photoZoomModal" class="photo-zoom-modal" style="display: none;" aria-hidden="true" title="화면을 클릭하면 닫힙니다">
+      <div class="photo-zoom-container">
+        <img id="photoZoomImg" class="photo-zoom-img" src="" alt="약품 사진">
+        <div id="photoZoomTitle" class="photo-zoom-title"></div>
       </div>
     </div>
   </div>
