@@ -16,8 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   
-  <script type="module" crossorigin src="/assets/index-CS6Ab6Ky.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DsK2iB6Q.css">
+  <script type="module" crossorigin src="/assets/index-C74JuE9e.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-gubaT5hP.css">
 </head>
 <body class="light-theme">
   <!-- Full-screen loader -->
@@ -292,7 +292,13 @@
           <!-- 5. Schedule Selection: 복약 시각 -->
           <div class="form-row">
             <div class="schedule-label-bar">
-              <label class="form-label required" id="scheduleSelectionLabel">복약 시각 <span class="req-star">*</span></label>
+              <div class="schedule-label-left">
+                <label class="form-label required" id="scheduleSelectionLabel">복약 시각 <span class="req-star">*</span></label>
+                <label class="toggle-30min-label" for="show30MinCheckbox">
+                  <input type="checkbox" id="show30MinCheckbox">
+                  <span>30분단위 표시</span>
+                </label>
+              </div>
               <div class="preset-chips" id="presetChipsContainer">
                 <!-- Preset buttons dynamically injected in JS based on scheduleMode -->
               </div>
