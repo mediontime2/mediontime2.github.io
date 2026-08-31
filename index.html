@@ -21,7 +21,7 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-DU2iLiSE.js"></script>
+  <script type="module" crossorigin src="/assets/index-BZ671p1y.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-CsqDBX4v.css">
 </head>
 
@@ -464,20 +464,28 @@
     <!-- Google Drive Storage Quota Exceeded Modal -->
     <div class="modal-overlay" id="driveQuotaModal" style="display: none; z-index: 250;">
       <div class="modal-card" style="max-width: 400px; text-align: center; padding: 28px 22px;">
-        <div class="delete-icon-picto" style="background: rgba(245, 158, 11, 0.15); color: #d97706; margin: 0 auto 16px;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="delete-icon-picto"
+          style="background: rgba(245, 158, 11, 0.15); color: #d97706; margin: 0 auto 16px;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 12A10 10 0 1 1 12 2a10 10 0 0 1 10 10Z"></path>
             <line x1="12" y1="8" x2="12" y2="12"></line>
             <line x1="12" y1="16" x2="12.01" y2="16"></line>
           </svg>
         </div>
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--text-main);" data-i18n="quota_modal_title">구글 드라이브 용량 부족</h3>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6;" data-i18n="quota_modal_desc">
-          구글 계정의 저장 공간(15GB)이 가득 차서 <strong>데이터가 구글 드라이브에 저장되지 않았습니다.</strong><br><br>현재 브라우저에만 임시 보관되므로, 다른 기기와의 동기화 및 안전한 클라우드 보관을 위해 구글 드라이브(Gmail, 사진 등)의 불필요한 파일을 정리해 주세요.
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--text-main);"
+          data-i18n="quota_modal_title">구글 드라이브 용량 부족</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6;"
+          data-i18n="quota_modal_desc">
+          구글 계정의 저장 공간(15GB)이 가득 차서 <strong>데이터가 구글 드라이브에 저장되지 않았습니다.</strong><br><br>현재 브라우저에만 임시 보관되므로, 다른 기기와의 동기화 및
+          안전한 클라우드 보관을 위해 구글 드라이브(Gmail, 사진 등)의 불필요한 파일을 정리해 주세요.
         </p>
         <div style="display: flex; gap: 10px; justify-content: center;">
-          <a href="https://one.google.com/storage" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="flex: 1; padding: 10px; text-decoration: none; font-size: 0.88rem; display: inline-flex; align-items: center; justify-content: center;" data-i18n="btn_manage_storage">용량 정리하기</a>
-          <button type="button" class="btn btn-primary" id="closeDriveQuotaModalBtn" style="flex: 1; padding: 10px;" data-i18n="btn_confirm">확인</button>
+          <a href="https://one.google.com/storage" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"
+            style="flex: 1; padding: 10px; text-decoration: none; font-size: 0.88rem; display: inline-flex; align-items: center; justify-content: center;"
+            data-i18n="btn_manage_storage">용량 정리하기</a>
+          <button type="button" class="btn btn-primary" id="closeDriveQuotaModalBtn" style="flex: 1; padding: 10px;"
+            data-i18n="btn_confirm">확인</button>
         </div>
       </div>
     </div>
@@ -485,18 +493,26 @@
     <!-- Premium Upgrade Modal (Freemium: 1 free, 2+ require Premium) -->
     <div class="modal-overlay" id="premiumUpgradeModal" style="display: none; z-index: 260;">
       <div class="modal-card" style="max-width: 400px; text-align: center; padding: 28px 22px;">
-        <div class="delete-icon-picto" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(234, 88, 12, 0.2)); color: #d97706; margin: 0 auto 16px; width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center;">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="delete-icon-picto"
+          style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(234, 88, 12, 0.2)); color: #d97706; margin: 0 auto 16px; width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"></path>
           </svg>
         </div>
-        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: var(--text-main);" data-i18n="premium_modal_title">👑 프리미엄 기능</h3>
-        <p id="premiumModalDesc" style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6;" data-i18n="premium_modal_desc">
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: var(--text-main);"
+          data-i18n="premium_modal_title">👑 프리미엄 기능</h3>
+        <p id="premiumModalDesc"
+          style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6;"
+          data-i18n="premium_modal_desc">
           무료 버전에서는 약품을 최대 1개까지 등록할 수 있습니다.<br><strong>2개 이상의 약품 등록 및 맞춤 스마트 알람</strong>을 이용하시려면 프리미엄으로 업그레이드해 주세요.
         </p>
         <div style="display: flex; gap: 10px; justify-content: center;">
-          <button type="button" class="btn btn-secondary" id="closePremiumModalBtn" style="flex: 1; padding: 10px;" data-i18n="btn_cancel">취소</button>
-          <button type="button" class="btn btn-primary" id="launchBillingBtn" style="flex: 1.4; padding: 10px; font-weight: 600; background: linear-gradient(135deg, #2563eb, #1d4ed8);" data-i18n="btn_upgrade_premium">💎 프리미엄 잠금 해제</button>
+          <button type="button" class="btn btn-secondary" id="closePremiumModalBtn" style="flex: 1; padding: 10px;"
+            data-i18n="btn_cancel">취소</button>
+          <button type="button" class="btn btn-primary" id="launchBillingBtn"
+            style="flex: 1.4; padding: 10px; font-weight: 600; background: linear-gradient(135deg, #2563eb, #1d4ed8);"
+            data-i18n="btn_upgrade_premium">💎 프리미엄 잠금 해제</button>
         </div>
       </div>
     </div>
