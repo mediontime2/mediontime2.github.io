@@ -21,7 +21,7 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-B_ol8JTd.js"></script>
+  <script type="module" crossorigin src="/assets/index-Bx2hcf7G.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-CsqDBX4v.css">
 </head>
 
@@ -420,8 +420,12 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" id="deleteMedBtn" class="btn btn-danger" style="display: none; margin-right: auto;"
-              data-i18n="btn_delete">삭제</button>
+            <div style="display: flex; gap: 8px; margin-right: auto;">
+              <button type="button" id="deleteMedBtn" class="btn btn-danger" style="display: none;"
+                data-i18n="btn_delete">삭제</button>
+              <button type="button" id="duplicateMedBtn" class="btn btn-secondary" style="display: none;"
+                data-i18n="btn_duplicate">복제</button>
+            </div>
             <button type="button" class="btn btn-secondary" id="cancelMedModalBtn" data-i18n="btn_cancel">취소</button>
             <button type="submit" class="btn btn-primary" id="saveMedBtn" data-i18n="btn_save">저장</button>
           </div>
