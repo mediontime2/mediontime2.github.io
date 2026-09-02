@@ -21,8 +21,8 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-TA-9zTbw.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-l8hxPAL3.css">
+  <script type="module" crossorigin src="/assets/index-DoG50EtH.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BtPaY8oB.css">
 </head>
 
 <body class="light-theme">
@@ -116,6 +116,14 @@
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
                   <span data-i18n="menu_history">히스토리</span>
+                </button>
+                <button type="button" id="dropdownAccountBtn" class="dropdown-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  <span data-i18n="menu_account">계정관리</span>
                 </button>
                 <div class="dropdown-divider"></div>
                 <button type="button" id="dropdownLogoutBtn" class="dropdown-item dropdown-danger">
@@ -251,6 +259,62 @@
 
         <div id="historyEmptyState" class="history-empty-message" style="display: none;">
           <p data-i18n="history_empty_desc">복약을 체크하면 날짜별 기록이 이곳에 저장됩니다.</p>
+        </div>
+      </main>
+    </div>
+
+    <!-- View 4: Account Management Page (계정관리 화면) -->
+    <div id="accountPageView" class="sub-page-view" style="display: none;">
+      <header class="sub-page-header">
+        <button type="button" id="backToDashboardFromAccountBtn" class="sub-page-back-btn" title="대시보드로 돌아가기"
+          data-i18n-title="btn_back_dashboard">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="sub-page-title-box">
+          <h2 class="sub-page-title" data-i18n="account_page_title">계정관리</h2>
+        </div>
+      </header>
+
+      <main class="sub-page-content">
+        <!-- Account Info Card -->
+        <div class="account-card">
+          <div class="account-profile-header">
+            <div class="account-avatar-wrapper">
+              <img id="accountAvatarImg" class="account-avatar-img" src="" alt="프로필" style="display: none;">
+              <div id="accountAvatarPlaceholder" class="account-avatar-placeholder">U</div>
+            </div>
+            <div class="account-profile-info">
+              <div id="accountUserName" class="account-user-name">-</div>
+              <div id="accountUserEmail" class="account-user-email">-</div>
+            </div>
+          </div>
+          <div class="account-divider"></div>
+          <div class="account-details-grid">
+            <div class="account-detail-row">
+              <span class="account-detail-label" data-i18n="account_login_service">연동 서비스</span>
+              <span class="account-detail-value" data-i18n="account_google_auth">Google 계정</span>
+            </div>
+            <div class="account-detail-row">
+              <span class="account-detail-label" data-i18n="account_data_storage">데이터 저장소</span>
+              <span class="account-detail-value" data-i18n="account_google_drive">Google Drive (AppData)</span>
+            </div>
+            <div class="account-detail-row">
+              <span class="account-detail-label" data-i18n="account_status_label">상태</span>
+              <span class="account-badge-connected" data-i18n="account_status_connected">정상 연동됨</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Danger Zone Card -->
+        <div class="danger-zone-card">
+          <div class="danger-zone-header">
+            <div class="danger-zone-title" data-i18n="danger_zone_title">위험 영역</div>
+            <div class="danger-zone-desc" data-i18n="danger_zone_desc">계정을 탈퇴하면 모든 세션과 설정이 초기화되며, 원하실 경우 구글 드라이브의 백업 데이터도 영구 삭제됩니다.</div>
+          </div>
+          <button type="button" id="openWithdrawalModalBtn" class="btn btn-danger" data-i18n="btn_withdraw_account">계정 탈퇴</button>
         </div>
       </main>
     </div>
@@ -456,6 +520,43 @@
             data-i18n="btn_cancel">취소</button>
           <button type="button" class="btn btn-danger" id="executeDeleteConfirmBtn" style="flex: 1; padding: 10px;"
             data-i18n="btn_delete_confirm">삭제</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Confirm Account Withdrawal Modal -->
+    <div class="modal-overlay" id="confirmWithdrawalModal" style="display: none; z-index: 200;">
+      <div class="modal-card" style="max-width: 420px; padding: 28px 24px; text-align: left;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div class="delete-icon-picto" style="margin: 0;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <div>
+            <h4 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: #1e293b;" data-i18n="modal_withdrawal_title">정말 계정을 탈퇴하시겠습니까?</h4>
+          </div>
+        </div>
+        
+        <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;" data-i18n="modal_withdrawal_desc">
+          계정을 탈퇴하면 기기 및 브라우저에 저장된 로그인 세션과 복약 정보가 즉시 초기화됩니다.
+        </p>
+
+        <!-- Google Drive Delete Option Checkbox -->
+        <div class="withdrawal-drive-option">
+          <label class="withdrawal-checkbox-label" for="deleteDriveDataCheckbox">
+            <input type="checkbox" id="deleteDriveDataCheckbox" checked>
+            <span style="font-weight: 600; color: #0f172a;" data-i18n="checkbox_delete_drive_data">구글 드라이브에 저장된 MediOnTime 백업 데이터도 영구 삭제합니다.</span>
+          </label>
+          <div class="withdrawal-checkbox-subtext" data-i18n="subtext_delete_drive_data">체크 시 Google Drive AppData 폴더에 보관된 약품 및 복약 기록 파일이 완전히 삭제됩니다.</div>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px;">
+          <button type="button" class="btn btn-secondary" id="cancelWithdrawalBtn" style="padding: 9px 16px;" data-i18n="btn_cancel">취소</button>
+          <button type="button" class="btn btn-danger" id="executeWithdrawalBtn" style="padding: 9px 18px;" data-i18n="btn_confirm_withdraw">탈퇴 완료</button>
         </div>
       </div>
     </div>
