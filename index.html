@@ -21,8 +21,8 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-DoG50EtH.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BtPaY8oB.css">
+  <script type="module" crossorigin src="/assets/index-J-WpLjzZ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CW9imKRH.css">
 </head>
 
 <body class="light-theme">
@@ -264,21 +264,20 @@
     </div>
 
     <!-- View 4: Account Management Page (계정관리 화면) -->
-    <div id="accountPageView" class="sub-page-view" style="display: none;">
-      <header class="sub-page-header">
-        <button type="button" id="backToDashboardFromAccountBtn" class="sub-page-back-btn" title="대시보드로 돌아가기"
-          data-i18n-title="btn_back_dashboard">
+    <div id="accountPageView" class="app-view" style="display: none;">
+      <header class="settings-page-header">
+        <button type="button" id="backToDashboardFromAccountBtn" class="btn-back-nav" title="대시보드로 돌아가기"
+          aria-label="대시보드로 돌아가기" data-i18n-title="btn_back_dashboard" data-i18n-aria-label="btn_back_dashboard">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
         </button>
-        <div class="sub-page-title-box">
-          <h2 class="sub-page-title" data-i18n="account_page_title">계정관리</h2>
-        </div>
+        <h2 class="settings-page-title" data-i18n="account_page_title">계정관리</h2>
       </header>
 
-      <main class="sub-page-content">
+      <main class="settings-page-content">
         <!-- Account Info Card -->
         <div class="account-card">
           <div class="account-profile-header">
