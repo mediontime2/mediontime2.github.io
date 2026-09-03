@@ -21,8 +21,8 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-zGWK-ltw.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DcKX9AeH.css">
+  <script type="module" crossorigin src="/assets/index-GuTVku2-.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-uwozftyq.css">
 </head>
 
 <body class="light-theme">
@@ -348,21 +348,21 @@
           <div id="telegramFormSection" style="display: none; margin-top: 1.25rem;">
             <div class="account-divider"></div>
             
-            <div style="display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1.2rem;">
-              <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
-                  <label for="telegramBotTokenInput" style="font-size: 0.85rem; font-weight: 600; color: var(--text-color);" data-i18n="telegram_bot_token">Bot Token</label>
+            <div style="display: flex; flex-direction: column; gap: 1.15rem; margin-top: 1.2rem;">
+              <div class="telegram-input-group">
+                <div class="telegram-input-header">
+                  <label for="telegramBotTokenInput" class="telegram-input-label" data-i18n="telegram_bot_token">Bot Token</label>
                   <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" data-i18n="telegram_get_token">@BotFather에서 발급 ↗</a>
                 </div>
-                <input type="password" id="telegramBotTokenInput" class="form-input telegram-input" placeholder="123456789:ABCdefGHIjkl..." autocomplete="off">
+                <input type="password" id="telegramBotTokenInput" class="telegram-input" placeholder="123456789:ABCdefGHIjkl..." autocomplete="off">
               </div>
 
-              <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
-                  <label for="telegramChatIdInput" style="font-size: 0.85rem; font-weight: 600; color: var(--text-color);" data-i18n="telegram_chat_id">Chat ID</label>
+              <div class="telegram-input-group">
+                <div class="telegram-input-header">
+                  <label for="telegramChatIdInput" class="telegram-input-label" data-i18n="telegram_chat_id">Chat ID</label>
                   <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" data-i18n="telegram_get_chat_id">@userinfobot에서 확인 ↗</a>
                 </div>
-                <input type="text" id="telegramChatIdInput" class="form-input telegram-input" placeholder="12345678" autocomplete="off">
+                <input type="text" id="telegramChatIdInput" class="telegram-input" placeholder="예: 987654321" autocomplete="off">
               </div>
 
               <div id="telegramStatusMsg" style="display: none; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 500;"></div>
