@@ -21,8 +21,8 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-CH8VOgFB.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CW9imKRH.css">
+  <script type="module" crossorigin src="/assets/index-D1UPXjAW.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-NzlA3KME.css">
 </head>
 
 <body class="light-theme">
@@ -303,6 +303,70 @@
             <div class="account-detail-row">
               <span class="account-detail-label" data-i18n="account_status_label">상태</span>
               <span class="account-badge-connected" data-i18n="account_status_connected">정상 연동됨</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telegram Notifications Card (Whitelisted Users Only) -->
+        <div id="telegramSettingsCard" class="account-card" style="display: none; margin-top: 1.5rem;">
+          <div class="account-profile-header" style="justify-content: space-between; align-items: center; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <div class="telegram-icon-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 2L11 13"></path>
+                  <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 style="font-size: 1.05rem; font-weight: 700; margin: 0; color: var(--text-color);" data-i18n="telegram_title">Telegram 알림 설정</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0.15rem 0 0;" data-i18n="telegram_desc">복약 시간에 맞춰 텔레그램 봇으로 실시간 알림을 수신합니다.</p>
+              </div>
+            </div>
+            <label class="toggle-switch-tg">
+              <input type="checkbox" id="telegramEnableCheckbox">
+              <span class="toggle-slider-tg"></span>
+            </label>
+          </div>
+
+          <div id="telegramFormSection" style="display: none; margin-top: 1.25rem;">
+            <div class="account-divider"></div>
+            
+            <div style="display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1.2rem;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                  <label for="telegramBotTokenInput" style="font-size: 0.85rem; font-weight: 600; color: var(--text-color);" data-i18n="telegram_bot_token">Bot Token</label>
+                  <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" data-i18n="telegram_get_token">@BotFather에서 발급 ↗</a>
+                </div>
+                <input type="password" id="telegramBotTokenInput" class="form-input telegram-input" placeholder="123456789:ABCdefGHIjkl..." autocomplete="off">
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                  <label for="telegramChatIdInput" style="font-size: 0.85rem; font-weight: 600; color: var(--text-color);" data-i18n="telegram_chat_id">Chat ID</label>
+                  <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" data-i18n="telegram_get_chat_id">@userinfobot에서 확인 ↗</a>
+                </div>
+                <input type="text" id="telegramChatIdInput" class="form-input telegram-input" placeholder="12345678" autocomplete="off">
+              </div>
+
+              <div id="telegramStatusMsg" style="display: none; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 500;"></div>
+
+              <div style="display: flex; gap: 0.75rem; margin-top: 0.3rem;">
+                <button type="button" id="telegramTestBtn" class="btn btn-secondary telegram-btn" style="flex: 1;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                  <span data-i18n="telegram_btn_test">테스트 발송</span>
+                </button>
+                <button type="button" id="telegramSaveBtn" class="btn btn-primary telegram-btn" style="flex: 1.2;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                  </svg>
+                  <span data-i18n="telegram_btn_save">설정 저장</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
