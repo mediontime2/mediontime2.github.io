@@ -21,8 +21,8 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-BHC5K2Cu.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-NzlA3KME.css">
+  <script type="module" crossorigin src="/assets/index-Bflnd2KR.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-XemWzTZx.css">
 </head>
 
 <body class="light-theme">
@@ -223,43 +223,85 @@
       </main>
     </div>
 
-    <!-- 3. History Page View (복약 히스토리) -->
+    <!-- 3. History Page View (복약 히스토리 - 월간 캘린더) -->
     <div id="historyPageView" class="app-view" style="display: none;">
       <header class="settings-page-header">
         <button type="button" id="backToDashboardFromHistoryBtn" class="btn-back-nav" title="대시보드로 돌아가기"
           aria-label="대시보드로 돌아가기" data-i18n-title="btn_back_dashboard" data-i18n-aria-label="btn_back_dashboard">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
         </button>
         <h2 class="settings-page-title" data-i18n="history_page_title">복약 히스토리</h2>
       </header>
 
-      <main class="settings-page-body">
-        <!-- History Top Toolbar: Total & Selection Counter, Select All, Delete Selected Button -->
-        <div class="history-toolbar">
-          <label class="history-select-all-label">
-            <input type="checkbox" id="selectAllHistoryCheckbox">
-            <span data-i18n="select_all">전체 선택</span>
-          </label>
-          <div class="history-toolbar-right">
-            <div class="history-count-badge" id="historyCountBadge">
-              총 <strong id="historyTotalCount">0</strong>개 중 <strong id="historySelectedCount">0</strong>개 선택됨
-            </div>
-            <button type="button" id="deleteSelectedHistoryBtn" class="btn btn-danger btn-sm" disabled
-              data-i18n="btn_delete_selected">선택 삭제</button>
+      <main class="settings-page-content history-page-content">
+        <!-- History Calendar Top Toolbar -->
+        <div class="calendar-history-toolbar">
+          <div class="cal-toolbar-left">
+            <button type="button" id="calSelectionModeBtn" class="btn btn-secondary btn-sm" data-i18n="btn_select">선택</button>
+            <button type="button" id="calDeleteSelectedBtn" class="btn btn-danger btn-sm" style="display: none;" data-i18n="btn_delete_selected">삭제</button>
+          </div>
+          <div class="cal-toolbar-right">
+            <button type="button" id="calPrevMonthBtn" class="btn-cal-nav" title="이전 달" aria-label="이전 달">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <span id="calMonthTitle" class="cal-month-title">2026. 09</span>
+            <button type="button" id="calNextMonthBtn" class="btn-cal-nav" title="다음 달" aria-label="다음 달">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <!-- History Date Cards List -->
-        <div class="history-list" id="historyList">
-          <!-- Dynamically populated date rows -->
+        <!-- Monthly Calendar Card -->
+        <div class="calendar-card" id="historyCalendarCard">
+          <!-- Weekday Headers -->
+          <div class="cal-weekday-grid">
+            <span class="cal-weekday-header cal-sun" data-i18n="day_sun">일</span>
+            <span class="cal-weekday-header" data-i18n="day_mon">월</span>
+            <span class="cal-weekday-header" data-i18n="day_tue">화</span>
+            <span class="cal-weekday-header" data-i18n="day_wed">수</span>
+            <span class="cal-weekday-header" data-i18n="day_thu">목</span>
+            <span class="cal-weekday-header" data-i18n="day_fri">금</span>
+            <span class="cal-weekday-header cal-sat" data-i18n="day_sat">토</span>
+          </div>
+
+          <!-- Date Cells Grid -->
+          <div class="cal-days-grid" id="calDaysGrid">
+            <!-- Dynamically populated in main.js -->
+          </div>
         </div>
 
-        <div id="historyEmptyState" class="history-empty-message" style="display: none;">
-          <p data-i18n="history_empty_desc">복약을 체크하면 날짜별 기록이 이곳에 저장됩니다.</p>
+        <!-- Legend (범례) -->
+        <div class="cal-legend-bar">
+          <div class="cal-legend-item">
+            <span class="cal-legend-dot dot-taken"></span>
+            <span data-i18n="legend_all_taken">복약 완료</span>
+          </div>
+          <div class="cal-legend-item">
+            <span class="cal-legend-dot dot-pending"></span>
+            <span data-i18n="legend_incomplete">미완료</span>
+          </div>
         </div>
+
+        <!-- Selected Date Daily Detail Section -->
+        <section class="cal-day-detail-section" id="calDayDetailSection">
+          <div class="cal-detail-header">
+            <h3 class="cal-detail-title" id="calDetailTitle">복약 상세</h3>
+          </div>
+          <div class="cal-detail-list" id="calDetailList">
+            <!-- Dynamically populated daily medication cards -->
+          </div>
+          <div class="cal-detail-empty" id="calDetailEmpty" style="display: none;">
+            <p data-i18n="history_day_empty">해당 일자에 등록된 복약 기록이 없습니다.</p>
+          </div>
+        </section>
       </main>
     </div>
 
