@@ -21,8 +21,8 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-Be5U6A3X.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CcBbzhwv.css">
+  <script type="module" crossorigin src="/assets/index-DdOiFYgl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DsROlhmZ.css">
 </head>
 
 <body class="light-theme">
@@ -577,17 +577,20 @@
             </div>
           </div>
 
-          <div class="modal-footer">
-            <div style="display: flex; gap: 8px; margin-right: auto;">
-              <button type="button" id="deleteMedBtn" class="btn btn-danger" style="display: none;"
-                data-i18n="btn_delete">삭제</button>
-              <button type="button" id="duplicateMedBtn" class="btn btn-secondary" style="display: none;"
-                data-i18n="btn_duplicate">복제</button>
-            </div>
-            <button type="button" class="btn btn-secondary" id="cancelMedModalBtn" data-i18n="btn_cancel">취소</button>
-            <button type="submit" class="btn btn-primary" id="saveMedBtn" data-i18n="btn_save">저장</button>
-          </div>
         </form>
+
+        <div class="modal-footer">
+          <div class="modal-footer-left">
+            <button type="button" id="deleteMedBtn" class="btn btn-danger" style="display: none;"
+              data-i18n="btn_delete">삭제</button>
+            <button type="button" id="duplicateMedBtn" class="btn btn-secondary" style="display: none;"
+              data-i18n="btn_duplicate">복제</button>
+          </div>
+          <div class="modal-footer-right">
+            <button type="button" class="btn btn-secondary" id="cancelMedModalBtn" data-i18n="btn_cancel">취소</button>
+            <button type="submit" form="medicationForm" class="btn btn-primary" id="saveMedBtn" data-i18n="btn_save">저장</button>
+          </div>
+        </div>
       </div>
     </div>
 
