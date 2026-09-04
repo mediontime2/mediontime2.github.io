@@ -21,8 +21,8 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-DCFh1OHz.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DBNRjJs5.css">
+  <script type="module" crossorigin src="/assets/index-ChKxJfiO.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-tXvdLuB1.css">
 </head>
 
 <body class="light-theme">
@@ -250,7 +250,12 @@
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
             </button>
-            <span id="calMonthTitle" class="cal-month-title">2026. 09</span>
+            <button type="button" id="calMonthTitleBtn" class="cal-month-title-btn" title="연/월 선택" aria-label="연도 및 월 선택">
+              <span id="calMonthTitle" class="cal-month-title">2026. 09</span>
+              <svg class="cal-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
             <button type="button" id="calNextMonthBtn" class="btn-cal-nav" title="다음 달" aria-label="다음 달">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="9 18 15 12 9 6"></polyline>
@@ -261,7 +266,7 @@
 
         <!-- Monthly Calendar Card -->
         <div class="calendar-card" id="historyCalendarCard">
-          <!-- Weekday Headers -->
+          <!-- Weekday Headers (Sticky) -->
           <div class="cal-weekday-grid">
             <span class="cal-weekday-header cal-sun" data-i18n="day_sun">일</span>
             <span class="cal-weekday-header" data-i18n="day_mon">월</span>
@@ -272,9 +277,11 @@
             <span class="cal-weekday-header cal-sat" data-i18n="day_sat">토</span>
           </div>
 
-          <!-- Date Cells Grid -->
-          <div class="cal-days-grid" id="calDaysGrid">
-            <!-- Dynamically populated in main.js -->
+          <!-- Continuous Vertical Scroll Viewport -->
+          <div class="cal-scroll-viewport" id="calScrollViewport">
+            <div class="cal-months-stream" id="calMonthsStream">
+              <!-- Dynamically populated continuous month blocks in main.js -->
+            </div>
           </div>
         </div>
       </main>
@@ -735,6 +742,40 @@
             style="flex: 1.4; padding: 10px; font-weight: 600; background: linear-gradient(135deg, #2563eb, #1d4ed8);"
             data-i18n="btn_upgrade_premium">💎 프리미엄 잠금 해제</button>
         </div>
+      </div>
+    </div>
+
+    <!-- History Year-Month Picker Modal (연/월 선택 모달) -->
+    <div id="calYearMonthModal" class="modal-overlay" style="display: none; z-index: 220;">
+      <div class="modal-card cal-picker-modal-card">
+        <header class="modal-header">
+          <h3 class="modal-title" data-i18n="select_year_month_title">연 / 월 선택</h3>
+          <button type="button" class="modal-close-btn" id="closeCalYearMonthModalBtn" title="닫기" aria-label="닫기">&times;</button>
+        </header>
+        <div class="modal-body cal-picker-modal-body">
+          <!-- Year Selector Row -->
+          <div class="cal-picker-year-row">
+            <button type="button" class="btn-cal-picker-year-nav" id="calPickerPrevYearBtn" title="이전 연도" aria-label="이전 연도">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <span class="cal-picker-year-label" id="calPickerYearLabel">2026년</span>
+            <button type="button" class="btn-cal-picker-year-nav" id="calPickerNextYearBtn" title="다음 연도" aria-label="다음 연도">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+          <!-- 12 Months Grid -->
+          <div class="cal-picker-month-grid" id="calPickerMonthGrid">
+            <!-- 1 ~ 12 month buttons generated in main.js -->
+          </div>
+        </div>
+        <footer class="modal-footer cal-picker-modal-footer">
+          <button type="button" class="btn btn-secondary" id="calPickerThisMonthBtn" data-i18n="btn_this_month">이번 달</button>
+          <button type="button" class="btn btn-primary" id="closeCalYearMonthModalBottomBtn" data-i18n="btn_close">닫기</button>
+        </footer>
       </div>
     </div>
 
