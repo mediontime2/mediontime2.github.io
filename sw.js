@@ -13,8 +13,8 @@ self.addEventListener('activate', (event) => {
 
 // Handle Web Push notification events
 self.addEventListener('push', (event) => {
-  let title = 'MediOnTime Reminder';
-  let body = 'Time to take your scheduled medications.';
+  let title = '약챙겨먹기 알림';
+  let body = '약 챙겨드실 시간입니다!';
   let clickUrl = '/';
 
   if (event.data) {
@@ -37,7 +37,7 @@ self.addEventListener('push', (event) => {
     tag: 'mediontime-alarm-' + Date.now(),
     renotify: true,
     actions: [
-      { action: 'open', title: 'Open MediOnTime' }
+      { action: 'open', title: '약챙겨먹기 열기' }
     ]
   };
 
