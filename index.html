@@ -29,7 +29,7 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-SVe9E5jE.js"></script>
+  <script type="module" crossorigin src="/assets/index-D5d9mdtx.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-CI5k1Ekp.css">
 </head>
 
@@ -347,7 +347,7 @@
                   <span>Web App Alarm</span>
                 </div>
                 <div style="font-size: 0.78rem; color: var(--text-muted, #64748b); margin-top: 2px;">
-                  iOS PWA / Android / Browser Web Push (VAPID)
+                  개인 서버 W3C Web Push (VAPID 자동 동기화)
                 </div>
               </div>
               <label class="toggle-switch-tg">
@@ -357,7 +357,7 @@
             </div>
 
             <!-- Web App Alarm Details Container (shown when Web App Alarm toggle is ON) -->
-            <div id="webPushDetailsContainer" style="display: none; flex-direction: column; gap: 0.85rem;">
+            <div id="webPushDetailsContainer" style="display: none; flex-direction: column; gap: 0.95rem;">
               <div class="account-divider" style="margin: 0;"></div>
 
               <!-- Permission status row -->
@@ -366,30 +366,31 @@
                 <span id="webPushPermissionBadge" style="padding: 2px 8px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; background: #e2e8f0; color: #475569;">Checking...</span>
               </div>
 
-              <!-- Subscription JSON output -->
+              <!-- Push Token Input -->
               <div class="telegram-input-group">
                 <div class="telegram-input-header">
-                  <label for="webPushSubscriptionOutput" class="telegram-input-label">Subscription Endpoint (JSON)</label>
-                  <button type="button" id="refreshWebPushSubscriptionBtn" class="telegram-helper-link" style="background: none; border: none; cursor: pointer; padding: 0;">Refresh 🔄</button>
+                  <label for="webPushTokenInput" class="telegram-input-label">Push Server Token</label>
+                  <span style="font-size: 0.78rem; color: var(--text-muted, #64748b);">개인 서버 인증 토큰</span>
                 </div>
-                <textarea id="webPushSubscriptionOutput" readonly rows="3" class="telegram-input" style="font-family: monospace; font-size: 0.75rem; line-height: 1.35; resize: vertical;" placeholder="Push Subscription 정보를 확인하는 중입니다..."></textarea>
+                <input type="password" id="webPushTokenInput" class="telegram-input" placeholder="e.g. mediontime_secret_token_1234" autocomplete="off">
               </div>
 
-              <!-- Actions: Copy Subscription JSON & Test Notification -->
-              <div style="display: flex; gap: 0.6rem;">
-                <button type="button" id="copyWebPushSubscriptionBtn" class="btn btn-secondary telegram-btn" style="flex: 1.3; font-size: 0.82rem;">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                  <span>Copy Subscription</span>
-                </button>
-                <button type="button" id="webPushTestInAppBtn" class="btn btn-secondary telegram-btn" style="flex: 1; font-size: 0.82rem;">
+              <!-- Actions: Test Alarm & Save & Sync Token -->
+              <div style="display: flex; gap: 0.6rem; margin-top: 0.2rem;">
+                <button type="button" id="webPushTestBtn" class="btn btn-secondary telegram-btn" style="flex: 1; font-size: 0.82rem;">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                   </svg>
                   <span>Test Alarm</span>
+                </button>
+                <button type="button" id="webPushSaveBtn" class="btn btn-primary telegram-btn" style="flex: 1.3; font-size: 0.82rem;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                  </svg>
+                  <span>Save & Sync</span>
                 </button>
               </div>
 
