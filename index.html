@@ -29,7 +29,7 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-D_gYNAT9.js"></script>
+  <script type="module" crossorigin src="/assets/index-DQO3jUzY.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-CI5k1Ekp.css">
 </head>
 
@@ -344,9 +344,9 @@
               <div>
                 <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem;">
                   <span>🔔</span>
-                  <span>Web App Alarm</span>
+                  <span data-i18n="web_push_title">Web App Alarm</span>
                 </div>
-                <div style="font-size: 0.78rem; color: var(--text-muted, #64748b); margin-top: 2px;">
+                <div style="font-size: 0.78rem; color: var(--text-muted, #64748b); margin-top: 2px;" data-i18n="web_push_desc">
                   개인 서버 W3C Web Push (VAPID 자동 동기화)
                 </div>
               </div>
@@ -362,17 +362,17 @@
 
               <!-- Permission status row -->
               <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; background: var(--bg-row-hover, #f8fafc); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-subtle, #e2e8f0);">
-                <span style="font-weight: 600; color: var(--text-color);">Notification Permission</span>
+                <span style="font-weight: 600; color: var(--text-color);" data-i18n="web_push_permission_label">Notification Permission</span>
                 <span id="webPushPermissionBadge" style="padding: 2px 8px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; background: #e2e8f0; color: #475569;">Checking...</span>
               </div>
 
               <!-- Push Token Input -->
               <div class="telegram-input-group">
                 <div class="telegram-input-header">
-                  <label for="webPushTokenInput" class="telegram-input-label">Push Server Token</label>
-                  <span style="font-size: 0.78rem; color: var(--text-muted, #64748b);">개인 서버 인증 토큰</span>
+                  <label for="webPushTokenInput" class="telegram-input-label" data-i18n="web_push_token_label">Push Server Token</label>
+                  <span style="font-size: 0.78rem; color: var(--text-muted, #64748b);" data-i18n="web_push_token_sublabel">개인 서버 인증 토큰</span>
                 </div>
-                <input type="password" id="webPushTokenInput" class="telegram-input" placeholder="e.g. mediontime_secret_token_1234" autocomplete="off">
+                <input type="password" id="webPushTokenInput" class="telegram-input" placeholder="e.g. mediontime_secret_token_1234" data-i18n-placeholder="web_push_token_placeholder" autocomplete="off">
               </div>
 
               <!-- Actions: Test Alarm & Save Token -->
@@ -382,7 +382,7 @@
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                   </svg>
-                  <span>Test Alarm</span>
+                  <span data-i18n="web_push_btn_test">Test Alarm</span>
                 </button>
                 <button type="button" id="webPushSaveBtn" class="btn btn-primary telegram-btn" style="flex: 1.3; font-size: 0.82rem;">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -390,7 +390,7 @@
                     <polyline points="17 21 17 13 7 13 7 21"></polyline>
                     <polyline points="7 3 7 8 15 8"></polyline>
                   </svg>
-                  <span>Save</span>
+                  <span data-i18n="web_push_btn_save">Save</span>
                 </button>
               </div>
 
@@ -409,9 +409,9 @@
               <div>
                 <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem;">
                   <span>✈️</span>
-                  <span>Telegram Alarm</span>
+                  <span data-i18n="telegram_title">Telegram Alarm</span>
                 </div>
-                <div style="font-size: 0.78rem; color: var(--text-muted, #64748b); margin-top: 2px;">
+                <div style="font-size: 0.78rem; color: var(--text-muted, #64748b); margin-top: 2px;" data-i18n="telegram_desc">
                   Google Apps Script (GAS) 5분 주기 자동 전송
                 </div>
               </div>
@@ -427,16 +427,16 @@
 
               <div class="telegram-input-group">
                 <div class="telegram-input-header">
-                  <label for="telegramChatIdInput" class="telegram-input-label">Telegram ID</label>
-                  <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" class="telegram-helper-link">Find ID ↗</a>
+                  <label for="telegramChatIdInput" class="telegram-input-label" data-i18n="telegram_chat_id">Telegram ID</label>
+                  <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" data-i18n="telegram_get_chat_id">Find ID ↗</a>
                 </div>
                 <input type="text" id="telegramChatIdInput" class="telegram-input" placeholder="e.g. 987654321" autocomplete="off">
               </div>
 
               <div class="telegram-input-group">
                 <div class="telegram-input-header">
-                  <label for="telegramBotTokenInput" class="telegram-input-label">Telegram Token</label>
-                  <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer" class="telegram-helper-link">Get Token ↗</a>
+                  <label for="telegramBotTokenInput" class="telegram-input-label" data-i18n="telegram_bot_token">Telegram Token</label>
+                  <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" data-i18n="telegram_get_token">Get Token ↗</a>
                 </div>
                 <input type="password" id="telegramBotTokenInput" class="telegram-input" placeholder="123456789:ABCdefGHIjkl..." autocomplete="off">
               </div>
@@ -450,7 +450,7 @@
                     <line x1="22" y1="2" x2="11" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                   </svg>
-                  <span>Send Test</span>
+                  <span data-i18n="telegram_btn_test">Send Test</span>
                 </button>
                 <button type="button" id="telegramSaveBtn" class="btn btn-primary telegram-btn" style="flex: 1.2;">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -458,7 +458,7 @@
                     <polyline points="17 21 17 13 7 13 7 21"></polyline>
                     <polyline points="7 3 7 8 15 8"></polyline>
                   </svg>
-                  <span>Save</span>
+                  <span data-i18n="telegram_btn_save">Save</span>
                 </button>
               </div>
 
@@ -467,12 +467,12 @@
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
                   <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem;">
                     <span>⚡</span>
-                    <span>Google Apps Script</span>
+                    <span data-i18n="telegram_gas_guide_title">Google Apps Script</span>
                   </div>
-                  <a href="https://script.google.com/home/start" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" style="font-size: 0.8rem;">Open GAS ↗</a>
+                  <a href="https://script.google.com/home/start" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" style="font-size: 0.8rem;" data-i18n="telegram_btn_open_gas">Open GAS ↗</a>
                 </div>
                 <button type="button" id="copyGasScriptBtn" class="btn btn-secondary btn-sm full-width" style="font-size: 0.82rem; padding: 0.55rem 0.8rem;">
-                  📋 Copy GAS Script Code
+                  <span data-i18n="telegram_btn_copy_gas">📋 Copy GAS Script Code</span>
                 </button>
               </div>
 
