@@ -29,8 +29,8 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-DiBX0e37.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DHfpyzJd.css">
+  <script type="module" crossorigin src="/assets/index-ON8HX2Z_.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CI5k1Ekp.css">
 </head>
 
 <body class="light-theme">
@@ -335,8 +335,154 @@
           </div>
         </div>
 
+        <!-- 1. Web App Push Alarm Settings Card (VAPID / Personal Server) -->
+        <div id="webPushSettingsCard" class="account-card" style="display: none; margin-top: 1.5rem;">
+          <div style="display: flex; flex-direction: column; gap: 1.15rem;">
+            
+            <!-- Web App Alarm on/off -->
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem;">
+                  <span>🔔</span>
+                  <span data-i18n="web_push_title">Web App Alarm</span>
+                </div>
+                <div style="font-size: 0.78rem; color: var(--text-muted, #64748b); margin-top: 2px;" data-i18n="web_push_desc">
+                  개인 서버 W3C Web Push (VAPID 자동 동기화)
+                </div>
+              </div>
+              <label class="toggle-switch-tg">
+                <input type="checkbox" id="webPushEnableCheckbox">
+                <span class="toggle-slider-tg"></span>
+              </label>
+            </div>
+
+            <!-- Web App Alarm Details Container (shown when Web App Alarm toggle is ON) -->
+            <div id="webPushDetailsContainer" style="display: none; flex-direction: column; gap: 0.95rem;">
+              <div class="account-divider" style="margin: 0;"></div>
+
+              <!-- Permission status row -->
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; background: var(--bg-row-hover, #f8fafc); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-subtle, #e2e8f0);">
+                <span style="font-weight: 600; color: var(--text-color);" data-i18n="web_push_permission_label">Notification Permission</span>
+                <span id="webPushPermissionBadge" style="padding: 2px 8px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; background: #e2e8f0; color: #475569;">Checking...</span>
+              </div>
+
+              <!-- Push Token Input -->
+              <div class="telegram-input-group">
+                <div class="telegram-input-header">
+                  <label for="webPushTokenInput" class="telegram-input-label" data-i18n="web_push_token_label">Push Server Token</label>
+                  <span style="font-size: 0.78rem; color: var(--text-muted, #64748b);" data-i18n="web_push_token_sublabel">개인 서버 인증 토큰</span>
+                </div>
+                <input type="password" id="webPushTokenInput" class="telegram-input" placeholder="e.g. mediontime_secret_token_1234" data-i18n-placeholder="web_push_token_placeholder" autocomplete="off">
+              </div>
+
+              <!-- Actions: Test Alarm & Save Token -->
+              <div style="display: flex; gap: 0.6rem; margin-top: 0.2rem;">
+                <button type="button" id="webPushTestBtn" class="btn btn-secondary telegram-btn" style="flex: 1; font-size: 0.82rem;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
+                  <span data-i18n="web_push_btn_test">Test Alarm</span>
+                </button>
+                <button type="button" id="webPushSaveBtn" class="btn btn-primary telegram-btn" style="flex: 1.3; font-size: 0.82rem;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                  </svg>
+                  <span data-i18n="web_push_btn_save">Save</span>
+                </button>
+              </div>
+
+              <div id="webPushStatusMsg" style="display: none; padding: 0.65rem 0.85rem; border-radius: 0.5rem; font-size: 0.8rem; font-weight: 500;"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 2. Telegram Alarm Settings Card -->
+        <div id="telegramSettingsCard" class="account-card" style="display: none; margin-top: 1.25rem;">
+          <div style="display: flex; flex-direction: column; gap: 1.15rem;">
+            
+            <!-- Telegram Alarm on/off -->
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem;">
+                  <span>✈️</span>
+                  <span data-i18n="telegram_title">Telegram Alarm</span>
+                </div>
+                <div style="font-size: 0.78rem; color: var(--text-muted, #64748b); margin-top: 2px;" data-i18n="telegram_desc">
+                  Google Apps Script (GAS) 5분 주기 자동 전송
+                </div>
+              </div>
+              <label class="toggle-switch-tg">
+                <input type="checkbox" id="telegramEnableCheckbox">
+                <span class="toggle-slider-tg"></span>
+              </label>
+            </div>
+
+            <!-- Telegram Inputs (ID & Token) -->
+            <div id="telegramInputsContainer" style="display: none; flex-direction: column; gap: 1rem;">
+              <div class="account-divider" style="margin: 0;"></div>
+
+              <div class="telegram-input-group">
+                <div class="telegram-input-header">
+                  <label for="telegramChatIdInput" class="telegram-input-label" data-i18n="telegram_chat_id">Telegram ID</label>
+                  <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" data-i18n="telegram_get_chat_id">Find ID ↗</a>
+                </div>
+                <input type="text" id="telegramChatIdInput" class="telegram-input" placeholder="e.g. 987654321" autocomplete="off">
+              </div>
+
+              <div class="telegram-input-group">
+                <div class="telegram-input-header">
+                  <label for="telegramBotTokenInput" class="telegram-input-label" data-i18n="telegram_bot_token">Telegram Token</label>
+                  <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" data-i18n="telegram_get_token">Get Token ↗</a>
+                </div>
+                <input type="password" id="telegramBotTokenInput" class="telegram-input" placeholder="123456789:ABCdefGHIjkl..." autocomplete="off">
+              </div>
+
+              <div id="telegramStatusMsg" style="display: none; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 500;"></div>
+
+              <!-- Send Test / Save Buttons -->
+              <div style="display: flex; gap: 0.75rem; margin-top: 0.25rem;">
+                <button type="button" id="telegramTestBtn" class="btn btn-secondary telegram-btn" style="flex: 1;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                  <span data-i18n="telegram_btn_test">Send Test</span>
+                </button>
+                <button type="button" id="telegramSaveBtn" class="btn btn-primary telegram-btn" style="flex: 1.2;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                  </svg>
+                  <span data-i18n="telegram_btn_save">Save</span>
+                </button>
+              </div>
+
+              <!-- GAS Script Information -->
+              <div class="gas-guide-box" style="margin-top: 0.5rem; padding: 1rem; background: var(--bg-row-hover, #f8fafc); border: 1px solid var(--border-subtle, #e2e8f0); border-radius: 0.5rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                  <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem;">
+                    <span>⚡</span>
+                    <span data-i18n="telegram_gas_guide_title">Google Apps Script</span>
+                  </div>
+                  <a href="https://script.google.com/home/start" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" style="font-size: 0.8rem;" data-i18n="telegram_btn_open_gas">Open GAS ↗</a>
+                </div>
+                <button type="button" id="copyGasScriptBtn" class="btn btn-secondary btn-sm full-width" style="font-size: 0.82rem; padding: 0.55rem 0.8rem;">
+                  <span data-i18n="telegram_btn_copy_gas">📋 Copy GAS Script Code</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
         <!-- Danger Zone Card -->
-        <div class="danger-zone-card" style="margin-top: 1.5rem;">
+        <div class="danger-zone-card">
           <div class="danger-zone-header">
             <div class="danger-zone-title" data-i18n="danger_zone_title">위험 영역</div>
             <div class="danger-zone-desc" data-i18n="danger_zone_desc">계정을 탈퇴하면 모든 세션과 설정이 초기화되며, 원하실 경우 구글 드라이브의 백업 데이터도 영구 삭제됩니다.</div>
