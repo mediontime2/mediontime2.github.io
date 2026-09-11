@@ -29,7 +29,7 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-BQHiWJU1.js"></script>
+  <script type="module" crossorigin src="/assets/index-tBHAhGnW.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-CI5k1Ekp.css">
 </head>
 
@@ -467,7 +467,7 @@
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
                   <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem;">
                     <span>⚡</span>
-                    <span data-i18n="telegram_gas_guide_title">Google Apps Script (영구 클라우드 동기화)</span>
+                    <span data-i18n="telegram_gas_guide_title">Google Apps Script</span>
                   </div>
                   <a href="https://script.google.com/home/start" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" style="font-size: 0.8rem;" data-i18n="telegram_btn_open_gas">Open GAS ↗</a>
                 </div>
@@ -480,11 +480,34 @@
                   <label for="gasWebAppUrlInput" class="setting-label" style="font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; display: flex; align-items: center; justify-content: space-between;">
                     <span data-i18n="gas_sync_url_label">🌐 GAS 웹 앱 URL (영구 동기화)</span>
                   </label>
-                  <input type="url" id="gasWebAppUrlInput" class="telegram-input" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off" style="font-size: 0.8rem;">
+                  <input type="url" id="gasWebAppUrlInput" class="telegram-input" placeholder="https://script.google.com/macros/s/.../exec" data-i18n-placeholder="gas_sync_url_placeholder" autocomplete="off" style="font-size: 0.8rem;">
                   <p style="font-size: 0.74rem; color: var(--text-muted, #64748b); margin-top: 0.35rem; line-height: 1.35;" data-i18n="gas_sync_url_desc">
                     GAS에서 [배포 ➡️ 새 배포 (웹 앱)] 후 생성된 URL을 입력하고 [Save]를 누르면 1시간 토큰 만료 없이 365일 영구 자동 동기화됩니다.
                   </p>
                 </div>
+
+                <!-- Dedicated GAS Test & Save Buttons -->
+                <div style="display: flex; gap: 0.6rem; margin-top: 0.65rem;">
+                  <button type="button" id="gasTestBtn" class="btn btn-secondary telegram-btn" style="flex: 1; font-size: 0.82rem;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="23 4 23 10 17 10"></polyline>
+                      <polyline points="1 20 1 14 7 14"></polyline>
+                      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                    <span data-i18n="gas_btn_test">동기화 테스트</span>
+                  </button>
+                  <button type="button" id="gasSaveBtn" class="btn btn-primary telegram-btn" style="flex: 1.2; font-size: 0.82rem;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                      <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                      <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    <span data-i18n="gas_btn_save">Save</span>
+                  </button>
+                </div>
+
+                <!-- Dedicated GAS Status Message Box -->
+                <div id="gasStatusMsg" style="display: none; margin-top: 0.65rem; padding: 0.65rem 0.85rem; border-radius: 0.5rem; font-size: 0.8rem; font-weight: 500;"></div>
               </div>
 
             </div>
