@@ -29,7 +29,7 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-b0f-Zrue.js"></script>
+  <script type="module" crossorigin src="/assets/index-BQHiWJU1.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-CI5k1Ekp.css">
 </head>
 
@@ -462,21 +462,33 @@
                 </button>
               </div>
 
-              <!-- GAS Script Information -->
+              <!-- GAS Script Information & Web App Sync URL -->
               <div class="gas-guide-box" style="margin-top: 0.5rem; padding: 1rem; background: var(--bg-row-hover, #f8fafc); border: 1px solid var(--border-subtle, #e2e8f0); border-radius: 0.5rem;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
                   <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem;">
                     <span>⚡</span>
-                    <span data-i18n="telegram_gas_guide_title">Google Apps Script</span>
+                    <span data-i18n="telegram_gas_guide_title">Google Apps Script (영구 클라우드 동기화)</span>
                   </div>
                   <a href="https://script.google.com/home/start" target="_blank" rel="noopener noreferrer" class="telegram-helper-link" style="font-size: 0.8rem;" data-i18n="telegram_btn_open_gas">Open GAS ↗</a>
                 </div>
-                <button type="button" id="copyGasScriptBtn" class="btn btn-secondary btn-sm full-width" style="font-size: 0.82rem; padding: 0.55rem 0.8rem;">
+                <button type="button" id="copyGasScriptBtn" class="btn btn-secondary btn-sm full-width" style="font-size: 0.82rem; padding: 0.55rem 0.8rem; margin-bottom: 0.75rem;">
                   <span data-i18n="telegram_btn_copy_gas">📋 Copy GAS Script Code</span>
                 </button>
+
+                <!-- GAS Web App Sync URL Input -->
+                <div class="setting-item" style="border: none; padding: 0; margin-top: 0.25rem;">
+                  <label for="gasWebAppUrlInput" class="setting-label" style="font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; display: flex; align-items: center; justify-content: space-between;">
+                    <span data-i18n="gas_sync_url_label">🌐 GAS 웹 앱 URL (영구 동기화)</span>
+                  </label>
+                  <input type="url" id="gasWebAppUrlInput" class="telegram-input" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off" style="font-size: 0.8rem;">
+                  <p style="font-size: 0.74rem; color: var(--text-muted, #64748b); margin-top: 0.35rem; line-height: 1.35;" data-i18n="gas_sync_url_desc">
+                    GAS에서 [배포 ➡️ 새 배포 (웹 앱)] 후 생성된 URL을 입력하고 [Save]를 누르면 1시간 토큰 만료 없이 365일 영구 자동 동기화됩니다.
+                  </p>
+                </div>
               </div>
 
             </div>
+
 
           </div>
         </div>
