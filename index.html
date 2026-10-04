@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -29,8 +29,8 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <script type="module" crossorigin src="/assets/index-B4qwIsKh.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CbKnDwkg.css">
+  <script type="module" crossorigin src="/assets/index-Cc7mD9Vr.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C55zeIMI.css">
 </head>
 
 <body class="light-theme">
@@ -497,11 +497,12 @@
       <div class="modal-card">
         <div class="modal-header">
           <h3 id="modalTitle" data-i18n="modal_title_add">약품 등록</h3>
-          <button class="modal-close-btn" id="closeMedModalBtn">&times;</button>
+          <button type="button" class="modal-close-btn" id="closeMedModalBtn" title="닫기" aria-label="닫기">&times;</button>
         </div>
 
         <form id="medicationForm" class="modal-body">
           <input type="hidden" id="editMedId">
+          <button type="submit" style="display: none;" aria-hidden="true" tabindex="-1"></button>
 
           <!-- 1. Medicine Name (Required) -->
           <div class="form-row">
@@ -677,7 +678,7 @@
       <div class="modal-card" style="max-width: 380px;">
         <div class="modal-header">
           <h3 data-i18n="modal_title_intake_time">복약 시각 변경</h3>
-          <button class="modal-close-btn" id="closeIntakeTimeModalBtn">&times;</button>
+          <button type="button" class="modal-close-btn" id="closeIntakeTimeModalBtn" title="닫기" aria-label="닫기">&times;</button>
         </div>
         <div class="modal-body" style="padding: 24px 20px; text-align: center;">
           <div id="intakeTimeMedInfo" style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;"></div>
@@ -707,11 +708,11 @@
             <line x1="14" y1="11" x2="14" y2="17"></line>
           </svg>
         </div>
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);"
+        <h3 id="confirmDeleteTitle" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);"
           data-i18n="confirm_delete_title">약품 삭제</h3>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 22px; line-height: 1.5;">
+        <p id="confirmDeleteDesc" style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 22px; line-height: 1.5;">
           <span data-i18n="confirm_delete_msg">정말 이 약품을 삭제하시겠습니까?</span><br>
-          <span style="font-size: 0.78rem; color: #64748b;" data-i18n="confirm_delete_submsg">(오늘까지의 복약 기록은 안전하게 보존됩니다)</span>
+          <span id="confirmDeleteSubDesc" style="font-size: 0.78rem; color: #64748b;" data-i18n="confirm_delete_submsg">(오늘까지의 복약 기록은 안전하게 보존됩니다)</span>
         </p>
         <div style="display: flex; gap: 10px; justify-content: center;">
           <button type="button" class="btn btn-secondary" id="cancelDeleteConfirmBtn" style="flex: 1; padding: 10px;"
